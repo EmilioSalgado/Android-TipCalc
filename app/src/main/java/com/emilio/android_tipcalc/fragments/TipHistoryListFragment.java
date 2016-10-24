@@ -5,9 +5,11 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -15,13 +17,14 @@ import java.util.ArrayList;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import com.emilio.android_tipcalc.R;
+import com.emilio.android_tipcalc.adapters.OnItemClickListener;
 import com.emilio.android_tipcalc.adapters.TipAdapter;
 import com.emilio.android_tipcalc.models.TipRecord;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class TipHistoryListFragment extends Fragment implements TipHistoryListFragmentListener {
+public class TipHistoryListFragment extends Fragment implements TipHistoryListFragmentListener, OnItemClickListener {
 
 
     @Bind(R.id.recyclerView)
@@ -47,7 +50,7 @@ public class TipHistoryListFragment extends Fragment implements TipHistoryListFr
 
     private void initAdapter(){
         if(adapter == null){
-            adapter = new TipAdapter(getActivity().getApplicationContext(), new ArrayList<TipRecord>());
+            adapter = new TipAdapter(getActivity().getApplicationContext(), this);
         }
     }
 
@@ -63,5 +66,12 @@ public class TipHistoryListFragment extends Fragment implements TipHistoryListFr
     @Override
     public void clearList() {
         adapter.clear();
+    }
+
+    @Override
+    public void onItemClick(TipRecord tipRecord) {
+        // TODO Implementar la logica para llamar una actividad enviandole la información de la propina
+        Log.v("Mensaje!!!", tipRecord.getDateFormated());
+        //Log.v("Mensaje!!!", String.valueOf(tipRecord.getTip()));
     }
 }
