@@ -1,6 +1,7 @@
 package com.emilio.android_tipcalc.fragments;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -17,6 +18,7 @@ import java.util.ArrayList;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import com.emilio.android_tipcalc.R;
+import com.emilio.android_tipcalc.activities.TipInfoActivity;
 import com.emilio.android_tipcalc.adapters.OnItemClickListener;
 import com.emilio.android_tipcalc.adapters.TipAdapter;
 import com.emilio.android_tipcalc.models.TipRecord;
@@ -70,8 +72,10 @@ public class TipHistoryListFragment extends Fragment implements TipHistoryListFr
 
     @Override
     public void onItemClick(TipRecord tipRecord) {
-        // TODO Implementar la logica para llamar una actividad enviandole la información de la propina
-        Log.v("Mensaje!!!", tipRecord.getDateFormated());
-        //Log.v("Mensaje!!!", String.valueOf(tipRecord.getTip()));
+        Intent intent = new Intent(getActivity(), TipInfoActivity.class);
+        intent.putExtra(TipInfoActivity.TIP_KEY, tipRecord.getTip());
+        intent.putExtra(TipInfoActivity.TOTAL_KEY, tipRecord.getBill());
+        intent.putExtra(TipInfoActivity.DATE_KEY, tipRecord.getDateFormated());
+        startActivity(intent);
     }
 }

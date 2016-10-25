@@ -8,10 +8,11 @@
     <string name="main.button.clear">Borrar Recientes</string>
     <string name="main.menu.action.about">Acerca de</string>
 
-    <string name="global.message.tip">Propina %,.1f</string>
+    <string name="global.message.tip">Propina: %,.1f</string>
 
-    <string name="tipdetail.message.bill">Total %,.1f</string>
+    <string name="tipdetail.message.bill">Total: %,.1f</string>
 
+    <string name="global.mesage.date">Fecha: </string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
