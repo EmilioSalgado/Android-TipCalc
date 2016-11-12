@@ -21,10 +21,13 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.emilio.android_tipcalc.R;
 import com.emilio.android_tipcalc.TipCalcApp;
+import com.emilio.android_tipcalc.db.TipsDatabase;
 import com.emilio.android_tipcalc.fragments.TipHistoryListFragment;
 import com.emilio.android_tipcalc.fragments.TipHistoryListFragmentListener;
 import com.emilio.android_tipcalc.entity.TipRecord;
 import com.emilio.android_tipcalc.utils.TipUtils;
+import com.raizlabs.android.dbflow.config.FlowConfig;
+import com.raizlabs.android.dbflow.config.FlowManager;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -54,10 +57,18 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
+        initDB();
+
         TipHistoryListFragment fragment = (TipHistoryListFragment) getSupportFragmentManager().findFragmentById(R.id.fragmentList);
 
         fragment.setRetainInstance(true);
         fragmentListener = (TipHistoryListFragmentListener) fragment;
+    }
+
+    private void initDB() {
+        FlowManager.init(new FlowConfig.Builder(this).build());
+
+        FlowManager.getDatabase(TipsDatabase.class).getWritableDatabase();
     }
 
     @Override
