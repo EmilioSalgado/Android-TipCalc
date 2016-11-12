@@ -17,6 +17,7 @@ import com.emilio.android_tipcalc.activities.TipInfoActivity;
 import com.emilio.android_tipcalc.adapters.OnItemClickListener;
 import com.emilio.android_tipcalc.adapters.TipAdapter;
 import com.emilio.android_tipcalc.entity.TipRecord;
+import com.emilio.android_tipcalc.utils.TipUtils;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -68,9 +69,9 @@ public class TipHistoryListFragment extends Fragment implements TipHistoryListFr
     @Override
     public void onItemClick(TipRecord tipRecord) {
         Intent intent = new Intent(getActivity(), TipInfoActivity.class);
-        intent.putExtra(TipInfoActivity.TIP_KEY, tipRecord.getTip());
+        intent.putExtra(TipInfoActivity.TIP_KEY, TipUtils.getTip(tipRecord));
         intent.putExtra(TipInfoActivity.TOTAL_KEY, tipRecord.getBill());
-        intent.putExtra(TipInfoActivity.DATE_KEY, tipRecord.getDateFormated());
+        intent.putExtra(TipInfoActivity.DATE_KEY, TipUtils.getDateFormated(tipRecord));
         startActivity(intent);
     }
 }

@@ -24,6 +24,7 @@ import com.emilio.android_tipcalc.TipCalcApp;
 import com.emilio.android_tipcalc.fragments.TipHistoryListFragment;
 import com.emilio.android_tipcalc.fragments.TipHistoryListFragmentListener;
 import com.emilio.android_tipcalc.entity.TipRecord;
+import com.emilio.android_tipcalc.utils.TipUtils;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -90,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
             record.setTipPercentage(tipPercentage);
             record.setTimestamp(new Date());
 
-            String strTip = String.format(getString(R.string.global_message_tip), record.getTip());
+            String strTip = String.format(getString(R.string.global_message_tip), TipUtils.getTip(record));
             fragmentListener.addToList(record);
 
             txtTip.setVisibility(View.VISIBLE);

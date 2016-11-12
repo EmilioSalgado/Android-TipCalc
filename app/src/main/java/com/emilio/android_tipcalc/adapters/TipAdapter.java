@@ -14,6 +14,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import com.emilio.android_tipcalc.R;
 import com.emilio.android_tipcalc.entity.TipRecord;
+import com.emilio.android_tipcalc.utils.TipUtils;
 
 
 /**
@@ -46,7 +47,7 @@ public class TipAdapter extends RecyclerView.Adapter<TipAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         TipRecord element = dataset.get(position);
-        String strTip = String.format(context.getString(R.string.global_message_tip), element.getTip());
+        String strTip = String.format(context.getString(R.string.global_message_tip), TipUtils.getTip(element));
         holder.txtContent.setText(strTip);
         holder.setOnItemClickListener(element, onItemClickListener);
     }
