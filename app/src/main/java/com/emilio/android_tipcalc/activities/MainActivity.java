@@ -63,6 +63,8 @@ public class MainActivity extends AppCompatActivity {
 
         fragment.setRetainInstance(true);
         fragmentListener = (TipHistoryListFragmentListener) fragment;
+
+        fragmentListener.initList();
     }
 
     @Override

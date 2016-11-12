@@ -15,6 +15,7 @@ import butterknife.ButterKnife;
 import com.emilio.android_tipcalc.R;
 import com.emilio.android_tipcalc.entity.TipRecord;
 import com.emilio.android_tipcalc.utils.TipUtils;
+import com.raizlabs.android.dbflow.sql.language.Select;
 
 
 /**
@@ -57,9 +58,16 @@ public class TipAdapter extends RecyclerView.Adapter<TipAdapter.ViewHolder> {
         return dataset.size();
     }
 
+    public void init(){
+        dataset = new Select().from(TipRecord.class).queryList();
+    }
+
     public void add(TipRecord record){
         //dataset.add(0, record);
         record.save();
+
+        dataset = new Select().from(TipRecord.class).queryList();
+
         notifyDataSetChanged();
     }
 
