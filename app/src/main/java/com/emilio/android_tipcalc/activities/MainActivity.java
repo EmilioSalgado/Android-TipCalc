@@ -23,7 +23,7 @@ import com.emilio.android_tipcalc.R;
 import com.emilio.android_tipcalc.TipCalcApp;
 import com.emilio.android_tipcalc.fragments.TipHistoryListFragment;
 import com.emilio.android_tipcalc.fragments.TipHistoryListFragmentListener;
-import com.emilio.android_tipcalc.models.TipRecord;
+import com.emilio.android_tipcalc.entity.TipRecord;
 
 public class MainActivity extends AppCompatActivity {
 
